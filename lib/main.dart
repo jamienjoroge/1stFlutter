@@ -4,7 +4,14 @@ void main() => runApp(MaterialApp(
   home:DevID(),
 ));
 
-class DevID extends StatelessWidget {
+class DevID extends StatefulWidget {
+  @override
+  _DevIDState createState() => _DevIDState();
+}
+
+class _DevIDState extends State<DevID> {
+  int devLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +21,15 @@ class DevID extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            devLevel +=1;
+          });
+        },
+        child: Icon(Icons.add),
+        color: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -49,7 +65,7 @@ class DevID extends StatelessWidget {
             ),
             SizedBox(height: 30.0,),
             Text(
-              'Current Developer Lvel',
+              'Current Developer Level',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
@@ -57,7 +73,7 @@ class DevID extends StatelessWidget {
             ),
             SizedBox(height: 20.0,),
             Text(
-              '8',
+              '$devLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
